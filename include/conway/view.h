@@ -5,7 +5,7 @@
 #include "conway/sdl_wrapper.h"
 
 namespace conway {
-    void cycle(conway::Game_of_Life&, conway::Renderer&);
+    inline constexpr int CELL_SIDE_LENGTH = 16;
     void play(conway::Game_of_Life&);
 }
 

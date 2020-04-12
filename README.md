@@ -12,3 +12,6 @@ How to build and run:
     cmake init ../
     make
     ./conway
+
+To pause/play the game, press the space bar. While the game is paused, you can
+click the cells to flip their state.
