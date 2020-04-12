@@ -25,9 +25,9 @@ int main()
         game.at(1, 0) = conway::Cell::Black;
         game.at(2, 0) = conway::Cell::Black;
         conway::play(game);
-        return 0;
     } catch(const std::runtime_error& e) {
         std::cerr << e.what() << '\n';
         return -1;
     }
+    return 0;
 }
