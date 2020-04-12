@@ -5,9 +5,14 @@
 #include <optional>
 #include <string>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_events.h>
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_render.h>
 
+/**
+ * This file contains wrapper classes and functions that provide an idiomatic
+ * modern-C++ interface for the SDL2 API.
+ */
 namespace conway {
     struct Init
     {

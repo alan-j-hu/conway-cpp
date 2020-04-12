@@ -55,7 +55,7 @@ constexpr std::array<std::pair<int, int>, 8> neighbor_positions = {
     std::make_pair(-1, 1),  std::make_pair(0, 1),  std::make_pair(1, 1)
 };
 
-int conway::Game_of_Life::count_neighbors(int x, int y)
+int conway::Game_of_Life::count_neighbors(int x, int y) const
 {
     auto& grid = read_grid();
     int count = 0;

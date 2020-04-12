@@ -17,6 +17,10 @@ namespace conway {
     class Game_of_Life
     {
     public:
+        /**
+         * Initializes the game state with a grid of the specified width and
+         * height, with all cells set to white.
+         */
         Game_of_Life(int width, int height);
 
         int width() const { return m_width; }
@@ -49,11 +53,11 @@ namespace conway {
         }
         void swap() { m_write_grid = !m_write_grid; };
 
-        // Performs positive modulo to allow for negative indices.
+        // Wraps around and allows negative indices.
         Cell& at(std::vector<Cell>&, int x, int y);
         const Cell& at(const std::vector<Cell>&, int x, int y) const;
 
-        int count_neighbors(int x, int y);
+        int count_neighbors(int x, int y) const;
     };
 }
 

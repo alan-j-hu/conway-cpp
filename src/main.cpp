@@ -20,10 +20,10 @@ void debug(const conway::Game_of_Life& game)
 int main()
 {
     try {
-        conway::Game_of_Life game(10, 10);
-        game.at(0, 5) = conway::Cell::Black;
-        game.at(1, 5) = conway::Cell::Black;
-        game.at(2, 5) = conway::Cell::Black;
+        conway::Game_of_Life game(50, 50);
+        game.at(0, 0) = conway::Cell::Black;
+        game.at(1, 0) = conway::Cell::Black;
+        game.at(2, 0) = conway::Cell::Black;
         conway::play(game);
         return 0;
     } catch(const std::runtime_error& e) {
