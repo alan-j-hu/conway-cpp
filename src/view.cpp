@@ -1,9 +1,6 @@
 #include "conway/view.h"
-#include "conway/events.h"
-#include "conway/init.h"
-#include "conway/window.h"
-#include "conway/render.h"
-#include <iostream>
+#include "conway/game_of_life.h"
+#include "conway/sdl_wrapper.h"
 
 constexpr int CELL_SIDE_LENGTH = 50;
 
