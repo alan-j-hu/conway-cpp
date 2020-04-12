@@ -1,8 +1,11 @@
 #include "conway/view.h"
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
 
 conway::View::View(conway::Game_of_Life& game)
     : m_game(game),
-      m_init(SDL_INIT_EVERYTHING),
+      m_init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_TIMER),
       m_window(
           "Conway's Game of Life", 0, 0,
           game.width() * conway::CELL_SIDE_LENGTH,
@@ -52,7 +55,7 @@ bool conway::View::cycle()
             break;
         case SDL_MOUSEBUTTONUP:
             auto button = event->button.button;
-            if(button == SDL_BUTTON_LEFT || button == SDL_TOUCH_MOUSEID) {
+            if(button == SDL_BUTTON_LEFT) {
                 mouse_x = event->button.x;
                 mouse_y = event->button.y;
                 mouse_clicked = true;
@@ -64,9 +67,11 @@ bool conway::View::cycle()
     if(m_is_playing) {
         m_game.tick();
         display();
+#ifndef __EMSCRIPTEN__
         // If the user attempts to quit while SDL is delaying, the event
         // simply gets queued. The pause isn't noticeable.
         SDL_Delay(64);
+#endif
     } else if(mouse_clicked) {
         int idx_x = mouse_x / conway::CELL_SIDE_LENGTH;
         int idx_y = mouse_y / conway::CELL_SIDE_LENGTH;
@@ -82,8 +87,17 @@ bool conway::View::cycle()
     return true;
 }
 
+void main_loop(void* view)
+{
+    reinterpret_cast<conway::View*>(view)->cycle();
+}
+
 void conway::play(conway::Game_of_Life& game)
 {
     conway::View view(game);
+#ifdef __EMSCRIPTEN__
+    emscripten_set_main_loop_arg(main_loop, &view, 0, true);
+#else
     while(view.cycle());
+#endif
 }

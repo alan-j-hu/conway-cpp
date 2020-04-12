@@ -13,5 +13,13 @@ How to build and run:
     make
     ./conway
 
+You can also build with Emscripten:
+
+    mkdir .embuild
+    cd .embuild
+    emcmake cmake init ../
+    emmake make
+    emrun index.html
+
 To pause/play the game, press the space bar. While the game is paused, you can
 click the cells to flip their state.
