@@ -18,6 +18,8 @@ namespace conway {
     struct Init
     {
         Init(Uint32);
+        Init(Init&&) = delete;
+        Init& operator=(Init&&) = delete;
         ~Init();
     };
 

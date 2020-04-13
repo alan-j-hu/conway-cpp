@@ -67,11 +67,9 @@ bool conway::View::cycle()
     if(m_is_playing) {
         m_game.tick();
         display();
-#ifndef __EMSCRIPTEN__
         // If the user attempts to quit while SDL is delaying, the event
         // simply gets queued. The pause isn't noticeable.
         SDL_Delay(64);
-#endif
     } else if(mouse_clicked) {
         int idx_x = mouse_x / conway::CELL_SIDE_LENGTH;
         int idx_y = mouse_y / conway::CELL_SIDE_LENGTH;
