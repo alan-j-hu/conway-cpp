@@ -9,7 +9,7 @@ How to build and run:
 
     mkdir .build
     cd .build
-    cmake init ../
+    cmake ../
     make
     ./conway
 
@@ -17,7 +17,7 @@ You can also build with Emscripten:
 
     mkdir .embuild
     cd .embuild
-    emcmake cmake init ../
+    emcmake cmake ../
     emmake make
     emrun index.html
 
